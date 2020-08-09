@@ -4,12 +4,13 @@ import Card from '../UI/Card';
 import './IngredientForm.css';
 
 const IngredientForm = React.memo((props) => {
+  // Best to manage state independently where it can be
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // ...
+    props.onAddIngredient({ title: enteredTitle, amount: enteredAmount });
   };
 
   return (
