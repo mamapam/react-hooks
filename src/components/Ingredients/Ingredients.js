@@ -32,6 +32,10 @@ function Ingredients() {
     console.log('RENDERING INGREDIENTS', userIngredients);
   }, [userIngredients]);
 
+  const filteredIngredientsHandler = (filteredIngredients) => {
+    setUserIngredients(filteredIngredients);
+  };
+
   const addIngredientHandler = (ingredient) => {
     fetch('https://react-hooks-17c3c.firebaseio.com/ingredients.json', {
       method: 'POST',
@@ -54,7 +58,7 @@ function Ingredients() {
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
-        <Search />
+        <Search onLoadIngredients={filteredIngredientsHandler} />
         <IngredientList ingredients={userIngredients} onRemoveItem={() => {}} />
       </section>
     </div>
