@@ -74,7 +74,7 @@ function Ingredients() {
     dispatch({ type: 'SET', ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = (ingredient) => {
+  const addIngredientHandler = useCallback((ingredient) => {
     // setIsLoading(true);
     dispatchHttp({ type: 'SEND' });
     fetch('https://react-hooks-17c3c.firebaseio.com/ingredients.json', {
@@ -97,9 +97,9 @@ function Ingredients() {
           ingredient: { id: responseData.name, ...ingredient },
         });
       });
-  };
+  }, []);
 
-  const removeIngredientHandler = (ingredientId) => {
+  const removeIngredientHandler = useCallback((ingredientId) => {
     // setIsLoading(true);
     dispatchHttp({ type: 'SEND' });
     fetch(
@@ -121,12 +121,12 @@ function Ingredients() {
         // setIsLoading(false);
         dispatchHttp({ type: 'ERROR', errorMessage: error.message });
       });
-  };
+  }, []);
 
-  const clearError = () => {
+  const clearError = useCallback(() => {
     // setError(null);
     dispatchHttp({ type: 'CLEAR' });
-  };
+  }, []);
 
   return (
     <div className="App">
