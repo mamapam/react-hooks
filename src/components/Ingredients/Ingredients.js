@@ -4,7 +4,6 @@ import IngredientForm from './IngredientForm';
 import IngredientList from './IngredientList';
 import ErrorModal from '../UI/ErrorModal';
 import Search from './Search';
-import LoadingIndicator from '../UI/LoadingIndicator';
 
 const ingredientReducer = (currentIngredients, action) => {
   switch (action.type) {
